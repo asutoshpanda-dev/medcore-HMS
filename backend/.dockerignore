@@ -1,0 +1,8 @@
+# Keep build output, IDE files and local secrets out of the image
+target
+.idea
+*.iml
+.vscode
+.env
+src/main/resources/application.properties
+src/main/resources/application-*.properties

@@ -1,0 +1,21 @@
+# Secrets: never commit these. Real values belong in the hosting service's environment variables.
+.env
+.env.*
+*.pem
+**/src/main/resources/application.properties
+**/src/main/resources/application-*.properties
+
+# Build output and downloaded packages
+**/target/
+**/node_modules/
+**/.next/
+
+# IDE and OS files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Test run output (may contain login tokens)
+**/scripts/test-results-*/

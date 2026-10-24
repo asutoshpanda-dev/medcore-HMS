@@ -1,0 +1,32 @@
+### 1. Create a patient
+POST http://localhost:8080/api/patients
+Content-Type: application/json
+
+{ "fullName": "Ram Sahu", "age": 35, "gender": "male", "phone": "9000000000" }
+
+### 2. Create a doctor
+POST http://localhost:8080/api/doctors
+Content-Type: application/json
+
+{ "fullName": "Dr. Priya Das", "specialization": "Cardiology", "phone": "9111111111", "email": "priya@medcore.com" }
+
+### 3. Overwrite test: this sends "id": 1 but must create a NEW doctor (id 2)
+POST http://localhost:8080/api/doctors
+Content-Type: application/json
+
+{ "id": 1, "fullName": "Dr. Test Overwrite", "specialization": "ENT", "phone": "9222222222", "email": "test@medcore.com" }
+
+### 4. Check doctors: Dr. Priya Das must still exist as id 1
+GET http://localhost:8080/api/doctors
+
+### 5. Create an appointment
+POST http://localhost:8080/api/appointments
+Content-Type: application/json
+
+{ "patientId": 1, "doctorId": 1, "appointmentDate": "2026-10-20", "appointmentTime": "10:30:00", "reason": "Checkup", "status": "SCHEDULED" }
+
+### 6. Bill test: no totalAmount and no paymentDate
+POST http://localhost:8080/api/bills
+Content-Type: application/json
+
+{ "patientId": 1, "appointmentId": 1, "consultationFee": 500.00, "medicineFee": 200.50, "paymentStatus": "PENDING" }

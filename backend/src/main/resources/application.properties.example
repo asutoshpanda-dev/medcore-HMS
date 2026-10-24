@@ -1,0 +1,38 @@
+# Template for src/main/resources/application.properties
+# Do not type real passwords or keys in this file. The ${...} parts are read from environment
+# variables, and the real application.properties is kept out of git (see .gitignore).
+
+# --- database (MySQL, database medcore_hms) ---
+spring.datasource.url=${DB_URL:jdbc:mysql://localhost:3306/medcore_hms}
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+# Flyway runs the SQL files in src/main/resources/db/migration (V1, V2, ...) at startup.
+# baseline-on-migrate marks an existing database as version 1 without running V1 again.
+spring.flyway.baseline-on-migrate=true
+# validate: at startup Hibernate checks that the tables match the code, and refuses to start if not.
+spring.jpa.hibernate.ddl-auto=validate
+
+# --- security: required, the app will not start without these ---
+app.jwt.secret=${JWT_SECRET}
+app.jwt.expiration-minutes=${JWT_EXPIRATION_MINUTES}
+app.superadmin.username=${SUPER_ADMIN_USERNAME}
+app.superadmin.password=${SUPER_ADMIN_PASSWORD}
+
+# --- login sessions (optional, default 14 days) ---
+app.jwt.refresh-days=14
+
+# --- password reset codes: "log" prints them in the console. Development only. ---
+# A server needs a real email sender here instead (added later).
+app.otp.mode=log
+
+# --- schedule: optional, these are the defaults ---
+app.schedule.open=09:00
+app.schedule.close=17:00
+app.schedule.slot-minutes=15
+
+# --- API lists: the largest page a client may ask for (the default page size is 20) ---
+spring.data.web.pageable.max-page-size=100
+
+# --- errors: never send exception details to the client ---
+server.error.include-message=never
+server.error.include-stacktrace=never

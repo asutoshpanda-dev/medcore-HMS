@@ -1,0 +1,9 @@
+package com.medcore.hms.repository;
+
+import com.medcore.hms.entity.Hospital;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface HospitalRepository extends JpaRepository<Hospital, Long> {
+
+    boolean existsByNameIgnoreCase(String name);
+}
