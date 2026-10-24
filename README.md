@@ -43,7 +43,7 @@ DEPLOY.md     How the public demo is hosted, step by step
 - No passwords, keys or database details are stored in this repository.
 
 ## Live demo
-- Web app: _add the Vercel link after deployment_
-- API documentation: _add the Render link after deployment, then `/swagger-ui.html`_
+- Web app: https://medcore-hms-ten.vercel.app
+- API documentation: https://medcore-hms-ngcq.onrender.com/swagger-ui.html
 
 The free hosting goes to sleep when idle. The first visit can take about a minute. See `DEPLOY.md`.
